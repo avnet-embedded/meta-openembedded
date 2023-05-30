@@ -18,7 +18,7 @@ jobs:
       - name: git-sync
         uses: wei/git-sync@v3.0.0
         with:
-          source_repo: "https://git.yoctoproject.org/${{ steps.upstream-repo.outputs.upstream }}"
+          source_repo: "https://git.openembedded.org/${{ steps.upstream-repo.outputs.upstream }}"
           destination_repo: "${{ github.repository }}"
           source_branch: "refs/remotes/source/*"
           destination_branch: "refs/heads/*"
@@ -26,7 +26,7 @@ jobs:
       - name: git-sync-tags
         uses: wei/git-sync@v3.0.0
         with:
-          source_repo: "https://git.yoctoproject.org/${{ steps.upstream-repo.outputs.upstream }}"
+          source_repo: "https://git.openembedded.org/${{ steps.upstream-repo.outputs.upstream }}"
           destination_repo: "${{ github.repository }}"
           source_branch: "refs/tags/*"
           destination_branch: "refs/tags/*"
