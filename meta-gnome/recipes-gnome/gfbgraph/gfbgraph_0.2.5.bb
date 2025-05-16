@@ -7,7 +7,6 @@ DEPENDS = " \
     glib-2.0 \
     json-glib \
     librest \
-    libsoup-2.4 \
     gnome-online-accounts \
 "
 GNOMEBASEBUILDCLASS = "autotools"
