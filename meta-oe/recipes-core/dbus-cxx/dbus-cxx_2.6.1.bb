@@ -6,7 +6,7 @@ LICENSE = "LGPL-3.0-or-later | BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://COPYING;md5=24594f493407a4cd401ce9794e0b9308"
 
 SRC_URI = "git://github.com/dbus-cxx/dbus-cxx.git;branch=master;protocol=https;tag=${PV}"
-SRCREV = "b705ad73bef724de0ed33f60462c70b380b6b300"
+SRCREV = "521a3d88bb731b94cc9998a0f711a5ca9e831e04"
 
 DEPENDS = "libsigc++-3"
 
