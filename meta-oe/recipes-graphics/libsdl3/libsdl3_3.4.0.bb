@@ -19,7 +19,7 @@ SRC_URI = "http://www.libsdl.org/release/SDL3-${PV}.tar.gz"
 
 S = "${UNPACKDIR}/SDL3-${PV}"
 
-SRC_URI[sha256sum] = "4c3b09330d866dc52eb65b66259a6684ad387252ca8c57901b3a2b534eb42e3d"
+SRC_URI[sha256sum] = "082cbf5f429e0d80820f68dc2b507a94d4cc1b4e70817b119bbb8ec6a69584b8"
 
 inherit cmake lib_package binconfig-disabled pkgconfig upstream-version-is-even
 
@@ -33,10 +33,8 @@ EXTRA_OECMAKE = " \
 	-DSDL_PTHREADS=ON \
 	-DSDL_RPATH=OFF \
 	-DSDL_SNDIO=OFF \
-	-DSDL_X11_XCURSOR=OFF \
 	-DSDL_X11_XDBE=OFF \
 	-DSDL_X11_XFIXES=OFF \
-	-DSDL_X11_XINPUT=OFF \
 	-DSDL_X11_XSCRNSAVER=OFF \
 	-DSDL_X11_XSHAPE=OFF \
 "
@@ -69,7 +67,7 @@ PACKAGECONFIG[pipewire] = "-DSDL_PIPEWIRE_SHARED=ON,-DSDL_PIPEWIRE_SHARED=OFF,pi
 PACKAGECONFIG[pulseaudio] = "-DSDL_PULSEAUDIO=ON,-DSDL_PULSEAUDIO=OFF,pulseaudio"
 PACKAGECONFIG[vulkan]    = "-DSDL_VULKAN=ON -DSDL_RENDER_VULKAN=ON,-DSDL_VULKAN=OFF -DSDL_RENDER_VULKAN=OFF"
 PACKAGECONFIG[wayland]    = "-DSDL_WAYLAND=ON,-DSDL_WAYLAND=OFF,wayland-native wayland wayland-protocols libxkbcommon"
-PACKAGECONFIG[x11]        = "-DSDL_X11=ON,-DSDL_X11=OFF,virtual/libx11 libxext libxrandr libxrender"
+PACKAGECONFIG[x11]        = "-DSDL_X11=ON,-DSDL_X11=OFF,virtual/libx11 libxext libxrandr libxrender libxcursor xinput libxtst"
 
 CFLAGS:append:class-native = " -DNO_SHARED_MEMORY"
 
