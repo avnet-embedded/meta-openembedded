@@ -8,10 +8,10 @@ BUGTRACKER = "http://bugzilla.libsdl.org/"
 SECTION = "libs"
 
 LICENSE = "Zlib"
-LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=98241180d857fe975e4b60d44d6c01a5"
+LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=ca6eaff208365238403badb97aa6b3d2"
 
 SRC_URI = "http://www.libsdl.org/release/sdl2-compat-${PV}.tar.gz"
-SRC_URI[sha256sum] = "23019a3b0825e2fd3411901df3e1ae24c595cd57e20a345509f77472bd9000e0"
+SRC_URI[sha256sum] = "b2fa522e7bb08113534904b3dc2d2f7ff7b0c259224d86c12374d5b4a4027930"
 S = "${UNPACKDIR}/sdl2-compat-${PV}"
 
 DEPENDS += "libsdl3"
