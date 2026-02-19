@@ -23,10 +23,8 @@ SRC_URI = "https://get.videolan.org/${BPN}/${PV}/${BP}.tar.xz \
            file://0004-Use-packageconfig-to-detect-mmal-support.patch \
            file://0005-ioctl-does-not-have-same-signature-between-glibc-and.patch \
            file://0006-configure-Disable-incompatible-function-pointer-type.patch \
-           file://taglib-2.patch \
-           file://0001-taglib-Fix-build-on-x86-32-bit.patch \
 "
-SRC_URI[sha256sum] = "24dbbe1d7dfaeea0994d5def0bbde200177347136dbfe573f5b6a4cee25afbb0"
+SRC_URI[sha256sum] = "e891cae6aa3ccda69bf94173d5105cbc55c7a7d9b1d21b9b21666e69eff3e7e0"
 inherit autotools-brokensep features_check gettext pkgconfig mime-xdg
 
 REQUIRED_DISTRO_FEATURES = "x11"
@@ -44,7 +42,6 @@ EXTRA_OECONF = "\
     --without-contrib \
     --without-kde-solid \
     --enable-realrtsp \
-    --disable-libtar \
     --enable-avcodec \
     ac_cv_path_MOC=${STAGING_BINDIR_NATIVE}${QT_DIR_NAME}/moc \
     ac_cv_path_RCC=${STAGING_BINDIR_NATIVE}${QT_DIR_NAME}/rcc \
@@ -94,7 +91,12 @@ PACKAGECONFIG[vnc] = "--enable-vnc,--disable-vnc, libvncserver"
 PACKAGECONFIG[x11] = "--with-x --enable-xcb,--without-x --disable-xcb,  xcb-util-keysyms libxpm libxinerama"
 PACKAGECONFIG[png] = "--enable-png,--disable-png,libpng"
 PACKAGECONFIG[vdpau] = "--enable-vdpau,--disable-vdpau,libvdpau"
-PACKAGECONFIG[wayland] = "--enable-wayland,--disable-wayland,wayland wayland-native"
+PACKAGECONFIG[wayland] = "--enable-wayland,--disable-wayland,wayland wayland-native wayland-protocols"
+
+do_configure:prepend() {
+    # use wayland-scanner from native sysroot instead of build host
+    sed -i 's,\(WAYLAND_SCANNER=\).*,\1${STAGING_BINDIR_NATIVE}/wayland-scanner,' configure.ac
+}
 
 do_configure:append() {
     # moc needs support: precreate build paths
@@ -117,7 +119,7 @@ FILES:${PN} += "\
     ${datadir}/applications \
     ${datadir}/vlc/ \
     ${datadir}/icons \
-    ${datadir}/metainfo/vlc.appdata.xml \
+    ${datadir}/metainfo/org.videolan.vlc.appdata.xml \
 "
 
 FILES:${PN}-dbg += "\
@@ -132,5 +134,3 @@ FILES:${PN}-staticdev += "\
 INSANE_SKIP:${PN} = "dev-so"
 
 EXCLUDE_FROM_WORLD = "${@bb.utils.contains("LICENSE_FLAGS_ACCEPTED", "commercial", "0", "1", d)}"
-
-SKIP_RECIPE[vlc] = "requires porting to ffmpeg >= 7 as of ffmpeg >= 5 it requires extensive changes disabling VAAPI (only supported with vlc >= 4)"
