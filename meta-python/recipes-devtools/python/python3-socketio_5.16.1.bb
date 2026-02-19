@@ -7,9 +7,9 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=42d0a9e728978f0eeb759c3be91536b8"
 
 inherit pypi python_setuptools_build_meta
 
-PYPI_PACKAGE = "python-socketio"
+PYPI_PACKAGE = "python_socketio"
 
-SRC_URI[sha256sum] = "ae6a1de5c5209ca859dc574dccc8931c4be17ee003e74ce3b8d1306162bb4a37"
+SRC_URI[sha256sum] = "f863f98eacce81ceea2e742f6388e10ca3cdd0764be21d30d5196470edf5ea89"
 
 PACKAGECONFIG ?= "asyncio_client client"
 PACKAGECONFIG[asyncio_client] = ",,,python3-aiohttp python3-websockets"
