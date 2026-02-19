@@ -7,10 +7,10 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=38cc21254909604298ce763a6e4440a0"
 
 inherit pypi python_setuptools_build_meta
 
-PYPI_PACKAGE = "Flask-SocketIO"
+PYPI_PACKAGE = "flask_socketio"
 UPSTREAM_CHECK_PYPI_PACKAGE = "${PYPI_PACKAGE}"
 
-SRC_URI[sha256sum] = "bb8f9f9123ef47632f5ce57a33514b0c0023ec3696b2384457f0fcaa5b70501c"
+SRC_URI[sha256sum] = "42a7bc552013633875ad320e39462323b4f7334594f1658d72b6ffed99940d4c"
 
 RDEPENDS:${PN} += "\
     python3-flask \
