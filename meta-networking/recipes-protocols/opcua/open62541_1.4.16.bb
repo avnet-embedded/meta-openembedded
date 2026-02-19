@@ -8,7 +8,7 @@ LIC_FILES_CHKSUM = "\
 "
 
 SRCREV_FORMAT = "opcua_mdnsd_ua-nodeset_mqtt-c"
-SRCREV_opcua = "45e4cd3ef6c79a8e503d37c9f5c89fefe90d99db"
+SRCREV_opcua = "f63e2a819aff6e468242dc2e54ccbd5b75d63654"
 SRCREV_mdnsd = "488d24fb9d427aec77df180268f0291eeee7fb8b"
 SRCREV_ua-nodeset = "d1bb6a22125bd7cd986272b1ee98a18a91d76fff"
 SRCREV_mqtt-c = "0f4c34c8cc00b16cfee094745d68b8cdbaecd8e0"
