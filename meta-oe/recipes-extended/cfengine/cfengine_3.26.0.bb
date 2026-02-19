@@ -11,37 +11,33 @@ its lifecycle. CFEngine takes systems from Build to Deploy, Manage and Audit."
 HOMEPAGE = "http://cfengine.com"
 
 LICENSE = "GPL-3.0-only"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=233aa25e53983237cf0bd4c238af255f"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=eef43e6a0b5a8f46ef7f11e1e4b32a6c"
 
-DEPENDS += "attr tokyocabinet bison-native libxml2"
+DEPENDS += "attr tokyocabinet bison-native openssl libpcre2 librsync"
 
 SRC_URI = "https://cfengine-package-repos.s3.amazonaws.com/tarballs/${BPN}-community-${PV}.tar.gz \
-           file://0001-Fixed-with-libxml2-no-case-in-configure.ac.patch \
            file://set-path-of-default-config-file.patch \
            "
-SRC_URI[sha256sum] = "911778ddb0a4e03a3ddfc8fc0f033136e1551849ea2dcbdb3f0f14359dfe3126"
+SRC_URI[sha256sum] = "d3c3884b314dae48a6884e919d0a12acac5aea95d970544e4632a1773857d19b"
 
 inherit autotools-brokensep systemd
 
 export EXPLICIT_VERSION = "${PV}"
 
 SYSTEMD_SERVICE:${PN} = "cfengine3.service cf-apache.service cf-hub.service cf-postgres.service \
-                         cf-runalerts.service cf-execd.service \
+                         cf-execd.service cf-php-fpm.service \
                          cf-monitord.service  cf-serverd.service \
                          cf-reactor.service \
 "
 SYSTEMD_AUTO_ENABLE:${PN} = "disable"
 
-PACKAGECONFIG ??= "libpcre openssl \
-                   ${@bb.utils.filter('DISTRO_FEATURES', 'pam systemd', d)} \
-"
+PACKAGECONFIG ??= "${@bb.utils.filter('DISTRO_FEATURES', 'pam systemd', d)}"
+
 PACKAGECONFIG[libxml2] = "--with-libxml2=yes,--with-libxml2=no,libxml2,"
 PACKAGECONFIG[mysql] = "--with-mysql=yes,--with-mysql=no,mariadb,"
 PACKAGECONFIG[postgresql] = "--with-postgresql=yes,--with-postgresql=no,postgresql,"
 PACKAGECONFIG[acl] = "--with-libacl=yes,--with-libacl=no,acl,"
 PACKAGECONFIG[libvirt] = "--with-libvirt=yes,--with-libvirt=no,libvirt,"
-PACKAGECONFIG[libpcre] = "--with-pcre=yes,--with-pcre=no,libpcre,"
-PACKAGECONFIG[openssl] = "--with-openssl=yes,--with-openssl=no,openssl,"
 PACKAGECONFIG[pam] = "--with-pam=yes,--with-pam=no,libpam,"
 PACKAGECONFIG[libyaml] = "--with-libyaml,--without-libyaml,libyaml,"
 PACKAGECONFIG[systemd] = "--with-systemd-service=${systemd_system_unitdir},--without-systemd-service"
@@ -53,8 +49,8 @@ CFLAGS += "${@bb.utils.contains('PACKAGECONFIG', 'libxml2', '-I${STAGING_INCDIR}
 
 do_install:append() {
     install -d ${D}${localstatedir}/${BPN}/bin
-    for f in `ls ${D}${bindir}`; do
-        ln -s ${bindir}/`basename $f` ${D}${localstatedir}/${BPN}/bin/
+    for f in $(find ${D}${bindir} -type f); do
+         ln -sr $f ${D}${localstatedir}/${BPN}/bin/
     done
 
     install -d ${D}${sysconfdir}/default
@@ -73,3 +69,5 @@ EOF
 }
 
 RDEPENDS:${PN} += "${BPN}-masterfiles"
+
+FILES:${PN} += "${libdir}/python"
