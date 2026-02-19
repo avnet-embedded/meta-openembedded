@@ -40,4 +40,5 @@ CONFFILES:${PN} = " \
                    ${sysconfdir}/thermald/thermal-cpu-cdev-order.xml \
                   "
 
-UPSTREAM_CHECK_URI = "https://github.com/01org/thermal_daemon/releases"
+UPSTREAM_CHECK_URI = "https://github.com/intel/thermal_daemon/releases/"
+UPSTREAM_CHECK_GITTAGREGEX = "v(?P<pver>(?!2\.15\.10$)\d+(\.\d+)+)"
