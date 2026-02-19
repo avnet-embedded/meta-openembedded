@@ -10,13 +10,10 @@ its lifecycle. CFEngine takes systems from Build to Deploy, Manage and Audit."
 
 HOMEPAGE = "http://cfengine.com"
 
-SKIP_RECIPE[cfengine] ?= "Needs porting to openssl 3.x"
-
 LICENSE = "GPL-3.0-only"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=233aa25e53983237cf0bd4c238af255f"
 
 DEPENDS += "attr tokyocabinet bison-native libxml2"
-#RDEPENDS:cfengine += "attr tokyocabinet bison-native libxml2"
 
 SRC_URI = "https://cfengine-package-repos.s3.amazonaws.com/tarballs/${BPN}-community-${PV}.tar.gz \
            file://0001-Fixed-with-libxml2-no-case-in-configure.ac.patch \
@@ -31,6 +28,7 @@ export EXPLICIT_VERSION = "${PV}"
 SYSTEMD_SERVICE:${PN} = "cfengine3.service cf-apache.service cf-hub.service cf-postgres.service \
                          cf-runalerts.service cf-execd.service \
                          cf-monitord.service  cf-serverd.service \
+                         cf-reactor.service \
 "
 SYSTEMD_AUTO_ENABLE:${PN} = "disable"
 
@@ -38,7 +36,7 @@ PACKAGECONFIG ??= "libpcre openssl \
                    ${@bb.utils.filter('DISTRO_FEATURES', 'pam systemd', d)} \
 "
 PACKAGECONFIG[libxml2] = "--with-libxml2=yes,--with-libxml2=no,libxml2,"
-PACKAGECONFIG[mysql] = "--with-mysql=yes,--with-mysql=no,mysql,"
+PACKAGECONFIG[mysql] = "--with-mysql=yes,--with-mysql=no,mariadb,"
 PACKAGECONFIG[postgresql] = "--with-postgresql=yes,--with-postgresql=no,postgresql,"
 PACKAGECONFIG[acl] = "--with-libacl=yes,--with-libacl=no,acl,"
 PACKAGECONFIG[libvirt] = "--with-libvirt=yes,--with-libvirt=no,libvirt,"
@@ -50,6 +48,8 @@ PACKAGECONFIG[systemd] = "--with-systemd-service=${systemd_system_unitdir},--wit
 PACKAGECONFIG[libcurl] = "--with-libcurl,--without-libcurl,curl,"
 
 EXTRA_OECONF = "hw_cv_func_va_copy=yes --with-init-script=${sysconfdir}/init.d --with-tokyocabinet"
+CFLAGS += "${@bb.utils.contains('PACKAGECONFIG', 'mysql', '-I${STAGING_INCDIR}/mysql', '', d)}"
+CFLAGS += "${@bb.utils.contains('PACKAGECONFIG', 'libxml2', '-I${STAGING_INCDIR}/libxml2', '', d)}"
 
 do_install:append() {
     install -d ${D}${localstatedir}/${BPN}/bin
