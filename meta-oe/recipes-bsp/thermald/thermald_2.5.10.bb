@@ -4,7 +4,7 @@ DESCRIPTION = "Thermal Daemon is a Linux daemon used to prevent the \
 overheating of platforms. This daemon monitors temperature and applies \
 compensation using available cooling methods."
 
-HOMEPAGE = "https://github.com/01org/thermal_daemon"
+HOMEPAGE = "https://github.com/intel/thermal_daemon"
 
 DEPENDS = "dbus dbus-glib dbus-glib-native libxml2 glib-2.0 glib-2.0-native upower libevdev"
 DEPENDS += "autoconf-archive-native"
