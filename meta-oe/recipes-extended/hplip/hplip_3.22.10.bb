@@ -20,6 +20,8 @@ SRC_URI = "${SOURCEFORGE_MIRROR}/${BPN}/${BP}.tar.gz \
            file://0001-Fix-upstream-CFLAGS-override.patch"
 SRC_URI[sha256sum] = "533c3f2f6b53e4163ded4fd81d1f11ae6162a0f6451bd5e62a8382d0c1366624"
 
+CVE_PRODUCT = "hplip linux_imaging_and_printing"
+
 UPSTREAM_CHECK_URI = "https://sourceforge.net/p/hplip/activity"
 
 DEPENDS += "cups python3 libusb1 python3-setuptools-native"
