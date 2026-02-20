@@ -12,7 +12,7 @@ LIC_FILES_CHKSUM = " \
 
 DEPENDS = "dbus ncurses"
 
-SRCREV = "ced36a5315135044a22c4b373be44368d312f9c8"
+SRCREV = "700cea78dbe7564131d51b21a7795e2567ee048a"
 BRANCH = "${@oe.utils.trim_version('${PV}', 2)}"
 SRC_URI = "git://gitlab.freedesktop.org/pipewire/pipewire.git;branch=${BRANCH};protocol=https;tag=${PV}"
 
@@ -127,7 +127,7 @@ PACKAGECONFIG[raop] = "-Draop=enabled,-Draop=disabled,openssl"
 PACKAGECONFIG[readline] = "-Dreadline=enabled,-Dreadline=disabled,readline"
 PACKAGECONFIG[sdl2] = "-Dsdl2=enabled,-Dsdl2=disabled,virtual/libsdl2"
 PACKAGECONFIG[sndfile] = "-Dsndfile=enabled,-Dsndfile=disabled,libsndfile1"
-PACKAGECONFIG[systemd] = "-Dsystemd=enabled,-Dsystemd=disabled,systemd"
+PACKAGECONFIG[systemd] = "-Dlibsystemd=enabled,-Dlibsystemd=disabled,systemd"
 PACKAGECONFIG[systemd-system-service] = "-Dsystemd-system-service=enabled,-Dsystemd-system-service=disabled,systemd"
 # "systemd-user-service" packageconfig will only install service
 # files to rootfs but not enable them as systemd.bbclass
@@ -312,6 +312,8 @@ FILES:${PN}-tools = " \
     ${bindir}/pw-link \
     ${bindir}/pw-loopback \
     ${bindir}/pw-metadata \
+    ${bindir}/pw-midi2play \
+    ${bindir}/pw-midi2record \
     ${bindir}/pw-mididump \
     ${bindir}/pw-midiplay \
     ${bindir}/pw-midirecord \
@@ -320,6 +322,7 @@ FILES:${PN}-tools = " \
     ${bindir}/pw-profiler \
     ${bindir}/pw-record \
     ${bindir}/pw-reserve \
+    ${bindir}/pw-sysex \
     ${bindir}/pw-top \
 "
 
