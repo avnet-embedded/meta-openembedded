@@ -65,3 +65,6 @@ FILES:${PN}-test = "${bindir}/botan-test  ${datadir}/${PN}/tests/data"
 COMPATIBLE_HOST:riscv32 = "null"
 
 BBCLASSEXTEND = "native nativesdk"
+
+CVE_STATUS[CVE-2026-32877] = "fixed-version: fixed since 3.11.0"
+CVE_STATUS[CVE-2026-32883] = "fixed-version: fixed since 3.11.0"
