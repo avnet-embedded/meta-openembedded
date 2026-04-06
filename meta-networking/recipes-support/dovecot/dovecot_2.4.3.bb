@@ -81,3 +81,8 @@ FILES:${PN}-dev += "${libdir}/dovecot/libdovecot*.so"
 FILES:${PN}-dbg += "${libdir}/dovecot/*/.debug"
 
 CVE_STATUS[CVE-2016-4983] = "not-applicable-platform: Affects only postinstall script on specific distribution."
+CVE_STATUS[CVE-2025-59031] = "fixed-version: fixed since v2.4.2"
+CVE_STATUS[CVE-2026-0394] = "fixed-version: fixed since v2.4.1"
+CVE_STATUS[CVE-2026-24031] = "fixed-version: fixed since v2.4.3"
+CVE_STATUS[CVE-2026-27855] = "fixed-version: fixed since v2.4.3"
+CVE_STATUS[CVE-2026-27860] = "fixed-version: fixed since v2.4.3"
