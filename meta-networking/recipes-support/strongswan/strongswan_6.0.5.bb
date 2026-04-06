@@ -189,3 +189,5 @@ SYSTEMD_SERVICE:${PN} = " \
     ${@bb.utils.contains('PACKAGECONFIG', 'swanctl', '${BPN}.service', '', d)} \
     ${@bb.utils.contains('PACKAGECONFIG', 'charon', '${BPN}-starter.service', '', d)} \
 "
+
+CVE_STATUS[CVE-2026-25075] = "fixed-version: fixed in 6.0.5"
