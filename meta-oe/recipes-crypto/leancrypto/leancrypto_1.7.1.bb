@@ -14,10 +14,11 @@ SECTION = "libs"
 SRC_URI = "git://github.com/smuellerDD/leancrypto.git;branch=master;protocol=https;tag=v${PV} \
            file://leancrypto-tests.sh \
            "
-# SRCREV tagged v1.7.0
-SRCREV = "e60fba94e8cabf1661a1da488b78b84a4fba56e9"
+SRCREV = "e7fa8c87a46c5787174c18fac385aa08eecdedd1"
 
 inherit pkgconfig meson
+
+CVE_STATUS[CVE-2026-34610] = "fixed-version: fixed since v1.7.1"
 
 EXTRA_OEMESON = "-Dstrip=false"
 TARGET_LDFLAGS:append = " ${DEBUG_PREFIX_MAP}"
