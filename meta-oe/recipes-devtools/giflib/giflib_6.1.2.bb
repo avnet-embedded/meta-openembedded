@@ -26,3 +26,5 @@ FILES:${PN}-utils = "${bindir}"
 BBCLASSEXTEND = "native"
 
 RDEPENDS:${PN}-utils = "perl"
+
+CVE_STATUS[CVE-2026-23868] = "fixed-version: fixed since v6.1.2"
