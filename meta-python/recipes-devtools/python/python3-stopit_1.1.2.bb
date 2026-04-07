@@ -14,8 +14,4 @@ SRC_URI += "\
     file://0001-Drop-the-deprecated-pkg_resources.patch \
 "
 
-RDEPENDS:${PN} += "\
-    python3-setuptools \
-    "
-
 BBCLASSEXTEND = "native nativesdk"
