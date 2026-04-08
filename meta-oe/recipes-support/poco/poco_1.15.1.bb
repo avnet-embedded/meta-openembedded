@@ -11,6 +11,7 @@ DEPENDS = "libpcre2 utf8proc zlib"
 SRC_URI = "git://github.com/pocoproject/poco.git;branch=poco-${PV};protocol=https;tag=poco-${PV}-release \
            file://0001-cppignore.lnx-Ignore-PKCS12-and-testLaunch-test.patch \
            file://0002-DataTest-disable-testSQLChannel-test.patch \
+           file://0003-quill-rdtsc-fallback-for-32-bit-powerpc.patch \
            file://run-ptest \
            "
 SRCREV = "a1aacbba1bda4301db01bb1a2c2ab80677756b90"
