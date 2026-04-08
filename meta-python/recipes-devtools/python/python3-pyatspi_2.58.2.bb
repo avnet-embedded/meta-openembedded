@@ -7,16 +7,18 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=db29218e6ba3794c56df7d4987dc7e4d \
                     file://COPYING.GPL;md5=751419260aa954499f7abaabaa882bbe"
 DEPENDS = "python3-dbus-native glib-2.0 dbus-glib libxml2 atk gtk+ python3-pygobject"
 
-SRC_URI = "git://github.com/GNOME/pyatspi2.git;protocol=https;branch=master"
-SRCREV = "8c69016b38d0e4caaf4c986938ea3410fb7351b6"
+SRC_URI = "git://github.com/GNOME/pyatspi2.git;protocol=https;branch=master;tag=${PV}"
+SRCREV = "f2fb289a9d2e4dac65fca8db0f4d3d65607a0cf2"
 
 
 # Same restriction as gtk+
-inherit features_check setuptools3
+inherit features_check
 ANY_OF_DISTRO_FEATURES = "${GTK2DISTROFEATURES}"
 REQUIRED_DISTRO_FEATURES = "gobject-introspection-data"
 
-inherit pkgconfig autotools python3native
+inherit pkgconfig python_setuptools_build_meta python_mesonpy
+
+DEPENDS += "python3-pygobject-native"
 
 FILES:${PN} += "${PYTHON_SITEPACKAGES_DIR}/pyatspi/*"
 
