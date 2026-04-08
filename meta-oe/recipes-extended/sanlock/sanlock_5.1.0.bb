@@ -11,22 +11,18 @@ SECTION = "utils"
 LICENSE = "LGPL-2.0-or-later & GPL-2.0-only & GPL-2.0-or-later"
 LIC_FILES_CHKSUM = "file://README.license;md5=60487bf0bf429d6b5aa72b6d37a0eb22"
 
-PV .= "+git"
-
-SRC_URI = "git://pagure.io/sanlock.git;protocol=http;branch=master \
+SRC_URI = "git://codeberg.org/sanlock/sanlock.git;protocol=https;branch=master;tag=${BPN}-${PV} \
            file://0001-sanlock-Replace-cp-a-with-cp-R-no-dereference-preser.patch \
            file://0001-add-missing-system-header-string.h.patch \
            "
-SRCREV = "efe86d2e691383da07942fe9a4bccab13046f3d4"
-
+SRCREV = "995685ac3ad8909cb7562e74dd13e3b450833d9c"
 
 CVE_STATUS[CVE-2012-5638] = "fixed-version: The CPE in the NVD database doesn't reflect correctly the vulnerable versions."
 
-DEPENDS = "libaio util-linux"
+DEPENDS = "libaio util-linux libdevmapper"
+RDEPENDS:${PN} += "libdevmapper"
 
-inherit setuptools3 useradd
-
-SETUPTOOLS_SETUP_PATH = "${S}/python"
+inherit useradd
 
 do_compile:prepend () {
     oe_runmake -C ${S}/wdmd CMD_LDFLAGS="${LDFLAGS}" LIB_LDFLAGS="${LDFLAGS}"
