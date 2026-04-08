@@ -3,9 +3,9 @@ HOMEPAGE = "https://setuptools-git-versioning.readthedocs.io"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=92e79e3a844e66731724600f3ac9c0d8"
 
-SRC_URI[sha256sum] = "6aef5b8bb1cfb953b6b343d27cbfc561d96cf2a2ee23c2e0dd3591042a059921"
+SRC_URI[sha256sum] = "c8a599bacf163b5d215552b5701faf5480ffc4d65426a5711a010b802e1590eb"
 
-inherit pypi setuptools3
+inherit pypi python_setuptools_build_meta
 
 PACKAGECONFIG ?= ""
 PACKAGECONFIG[python-version-smaller-3-dot-11] = ",,,python3-tomli"
