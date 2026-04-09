@@ -21,6 +21,7 @@ DEPENDS = " \
 GITHUB_BASE_URI = "https://github.com/ostreedev/ostree/releases"
 SRC_URI = "${GITHUB_BASE_URI}/download/v${PV}/libostree-${PV}.tar.xz \
            file://run-ptest \
+           file://0001-trivial-httpd-Fix-const-correctness-of-slash-pointer.patch \
            "
 SRC_URI[sha256sum] = "af8d080b9585e7fd1faba8f022967e1c268ae62e20ecf32ee7b364c1e307570b"
 
