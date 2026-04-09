@@ -8,7 +8,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=e98642e1210ade884e5254ab18d55b7d"
 
 SRC_URI:append:class-target = " file://0001-BLD-add-option-to-specify-numpy-header-location.patch "
 
-SRC_URI[sha256sum] = "4186a699674af418f655dbd420ed87f50d56b4cd6603784279d9eef6627823c8"
+SRC_URI[sha256sum] = "f4753e73e34c8d83221ba58f232433fca2748be8b18dbca02d242ed153945043"
 
 CVE_PRODUCT = "pandas"
 
