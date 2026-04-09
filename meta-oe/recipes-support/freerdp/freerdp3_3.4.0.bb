@@ -27,6 +27,7 @@ SRC_URI = "git://github.com/FreeRDP/FreeRDP.git;branch=master;protocol=https \
            file://CVE-2026-24675.patch \
            file://CVE-2026-24676.patch \
            file://CVE-2026-24679.patch \
+           file://CVE-2026-24680_CVE-2026-27950.patch \
            "
 
 S = "${WORKDIR}/git"
