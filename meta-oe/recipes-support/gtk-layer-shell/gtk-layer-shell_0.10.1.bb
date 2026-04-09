@@ -18,7 +18,7 @@ DEPENDS += " \
 SRC_URI = " \
 	git://github.com/wmww/gtk-layer-shell.git;protocol=https;branch=master;tag=v${PV} \
 "
-SRCREV = "3964966d72ea3359f4ff748081493e979c080b7e"
+SRCREV = "fd88ba666c18ff65ea786bf7b2e270d840030817"
 
 inherit meson pkgconfig features_check gobject-introspection vala
 
