@@ -14,13 +14,13 @@ inherit meson pkgconfig systemd python3targetconfig features_check
 
 REQUIRED_DISTRO_FEATURES = "systemd"
 
-SRC_URI = "git://github.com/CanonicalLtd/netplan.git;branch=stable/1.1;protocol=https \
+SRC_URI = "git://github.com/CanonicalLtd/netplan.git;branch=main;protocol=https \
            file://0001-meson.build-do-not-use-Werror.patch \
           "
 
 SRC_URI:append:libc-musl = " file://0001-don-t-fail-if-GLOB_BRACE-is-not-defined.patch"
 
-SRCREV = "01045f683b9419beb90119497cd1b2be44e83b8e"
+SRCREV = "f758e3f6415aa68b7cf28991bc5b3e9631297d6d"
 
 
 DEPENDS = "glib-2.0 libyaml util-linux-libuuid \
@@ -43,6 +43,7 @@ PACKAGES += "${PN}-dbus libnetplan"
 
 FILES:libnetplan = "${libdir}/libnetplan.so.*"
 FILES:${PN} = "${sbindir} ${libexecdir}/netplan/generate \
+               ${libexecdir}/netplan/configure \
                ${datadir}/netplan ${datadir}/bash-completion \
                ${systemd_unitdir} ${PYTHON_SITEPACKAGES_DIR} \
                ${sysconfdir}/netplan \
