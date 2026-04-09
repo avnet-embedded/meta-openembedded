@@ -8,10 +8,8 @@ BUGTRACKER = "https://github.com/speed47/spectre-meltdown-checker/issues"
 LICENSE = "GPL-3.0-only"
 LIC_FILES_CHKSUM = "file://spectre-meltdown-checker.sh;beginline=2;endline=2;md5=3ae5399e70af7be9b93f72568069e2f4"
 
-PV = "0.46+git"
-
-SRC_URI = "git://github.com/speed47/spectre-meltdown-checker;protocol=https;branch=master"
-SRCREV = "a20641fbad57f37da6093203484ca28769e5bb64"
+SRC_URI = "git://github.com/speed47/spectre-meltdown-checker;protocol=https;branch=master;tag=v${PV}"
+SRCREV = "8a6f9d5d638c601d2a875669015a6cb217e40f49"
 
 # binutils: readelf,objdump might be used for deeper analysis
 # coreutils: dd with iflag=skip_bytes oflag=seek_bytes in some cases
