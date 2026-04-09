@@ -81,3 +81,5 @@ do_configure:append() {
 FILES:${PN} += "${datadir}"
 
 CVE_STATUS[CVE-2025-68118] = "not-applicable-platform: only affects Windows"
+CVE_STATUS[CVE-2026-24677] = "cpe-incorrect: The current version (3.4.0) is not affected."
+CVE_STATUS[CVE-2026-24678] = "cpe-incorrect: The current version (3.4.0) is not affected."
