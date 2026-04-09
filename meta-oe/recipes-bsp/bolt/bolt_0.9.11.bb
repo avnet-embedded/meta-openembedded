@@ -7,8 +7,8 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=4fbd65380cdd255951079008b364516c"
 DEPENDS = "udev polkit dbus"
 REQUIRED_DISTRO_FEATURES = "polkit"
 
-SRC_URI = "git://gitlab.freedesktop.org/bolt/bolt.git;protocol=https;branch=master"
-SRCREV = "c0d4cb2f4399e86417907a37c0d8ef3bb9fb406f"
+SRC_URI = "git://gitlab.freedesktop.org/bolt/bolt.git;protocol=https;branch=master;tag=${PV}"
+SRCREV = "9d1d66380353dab94c28466f34adb2ba6c7e4393"
 
 
 CVE_PRODUCT = "freedesktop:bolt"
