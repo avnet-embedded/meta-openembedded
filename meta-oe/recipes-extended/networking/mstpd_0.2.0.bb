@@ -6,7 +6,7 @@ SRC_URI = " \
     file://bridge-stp \
     file://mstpd.service \
 "
-SRCREV = "d7dd987b101f277bfef8ac71de7c1d962a424e8e"
+SRCREV = "8995e5d11ee89f2251734e34cea711bb5a5bb911"
 
 UPSTREAM_CHECK_GITTAGREGEX = "(?P<pver>\d+(\.\d+){2,})"
 
