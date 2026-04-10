@@ -54,7 +54,7 @@ inherit autotools gettext cmake pkgconfig systemd
 
 # -DWITH_DLT_COREDUMPHANDLER=ON this feature is too experimental, disable for now
 #FILES:${PN} += "${libdir}/sysctl.d"
-EXTRA_OECMAKE += "-DWITH_DLT_LOGSTORAGE_GZIP=ON -DWITH_EXTENDED_FILTERING=ON -DSYSTEMD_UNITDIR=${systemd_system_unitdir}"
+EXTRA_OECMAKE += "-DWITH_DLT_LOGSTORAGE_GZIP=ON -DWITH_EXTENDED_FILTERING=ON -DSYSTEMD_UNITDIR=${systemd_system_unitdir} -DWITH_DLT_USE_IPv6=OFF"
 
 PACKAGES += "${PN}-systemd"
 SYSTEMD_PACKAGES = "${PN} ${PN}-systemd"
