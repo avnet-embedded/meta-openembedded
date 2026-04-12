@@ -37,7 +37,7 @@ do_compile() {
 do_install() {
     if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
         make DESTDIR=${D} VERS=${PV} SYSDPATH=${systemd_system_unitdir} \
-            PMPATHD=${systemd_unitdir}/system-sleep install
+            PMPATHD=${systemd_unitdir}/system-sleep SBINPATH=${sbindir} install
         install -d ${D}${sysconfdir}/tmpfiles.d
         install -m 644 ${UNPACKDIR}/volatiles.atop.conf ${D}${sysconfdir}/tmpfiles.d/atop.conf
         rm -f ${D}${systemd_system_unitdir}/atopacct.service
