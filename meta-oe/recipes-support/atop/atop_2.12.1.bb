@@ -7,7 +7,7 @@ etc. At regular intervals, it shows system-level activity related to the CPU, \
 memory, swap, disks (including LVM) and network layers, and for every process \
 (and thread) it shows e.g. the CPU utilization, memory growth, disk \
 utilization, priority, username, state, and exit code."
-HOMEPAGE = "http://www.atoptool.nl"
+HOMEPAGE = "https://www.atoptool.nl"
 SECTION = "console/utils"
 
 LICENSE = "GPL-2.0-only"
@@ -51,16 +51,19 @@ do_install() {
     # /var/log/atop will be created in runtime
     rm -rf ${D}${localstatedir}/log
     rmdir --ignore-fail-on-non-empty ${D}${localstatedir}
-
-    # remove atopacct related files
-    rm -rf ${D}${sbindir} ${D}${mandir}/man8
 }
 
 inherit systemd
+
+PACKAGES =+ "${PN}-acctd ${PN}-gpud"
 
 SYSTEMD_SERVICE:${PN} = "atop.service atopgpu.service atop-rotate.service"
 SYSTEMD_AUTO_ENABLE = "disable"
 
 FILES:${PN} += "${systemd_unitdir}/system-sleep ${systemd_system_unitdir}/atop-rotate.timer"
+FILES:${PN}-acctd += "${sbindir}/atopacctd ${mandir}/man8/atopacctd.8"
+FILES:${PN}-gpud += "${sbindir}/atopgpud ${mandir}/man8/atopgpud.8"
 
 RDEPENDS:${PN} = "procps"
+RDEPENDS:${PN}-gpud = "python3-core"
+RRECOMMENDS:${PN} = "${PN}-acctd ${PN}-gpud"
