@@ -11,22 +11,33 @@ SRC_URI += "\
            file://0005-fix-incorrect-timeout-while-system-time-changed.patch \
            file://0006-tweak-btrfs-packages.patch \
            file://0007-invoking-mount-with-infinite-timeout.patch \
-           file://0008-use-oe-variable-to-replace-hardcoded-dir.patch \
            file://0009-invoking-fsck-with-infinite-timeout.patch \
            file://0010-invoking-mkfs-with-infinite-timeout.patch \
            file://0011-invoking-dd-with-infinite-timeout.patch \
 "
-SRC_URI[sha256sum] = "54775ba212d1574b1b0750ce147f0d3cf3b5d73aaf040d172283edb57db4ba15"
+SRC_URI[sha256sum] = "6d8374d05eeab513b2a26cf01267e853df7b31e13ad1a1ba7d73a856190d0518"
 
 inherit pypi features_check systemd setuptools3_legacy
 
 REQUIRED_DISTRO_FEATURES = "systemd"
 
-RDEPENDS:${PN} += "python3-pykickstart python3-pyudev \
+RDEPENDS:${PN} += "python3-dasbus python3-pygobject python3-pykickstart python3-pyudev \
                    parted python3-pyparted multipath-tools \
                    lsof cryptsetup libblockdev libblockdev-bin \
                    libbytesize \
+                   util-linux \
 "
+
+do_install:append() {
+    install -d ${D}${sysconfdir}/dbus-1/system.d
+    install -m 644 ${S}/dbus/blivet.conf ${D}${sysconfdir}/dbus-1/system.d/blivet.conf
+    install -d ${D}${datadir}/dbus-1/system-services
+    install -m 644 ${S}/dbus/com.redhat.Blivet0.service ${D}${datadir}/dbus-1/system-services/com.redhat.Blivet0.service
+    install -d ${D}${libexecdir}
+    install -m 755 ${S}/dbus/blivetd ${D}${libexecdir}/blivetd
+    install -d ${D}${systemd_system_unitdir}
+    install -m 644 ${S}/dbus/blivet.service ${D}${systemd_system_unitdir}/blivet.service
+}
 
 FILES:${PN} += " \
     ${datadir}/dbus-1/system-services \
