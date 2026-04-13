@@ -8,7 +8,7 @@ SRC_URI = " \
     file://0001-flatpak-pc-add-pc_sysrootdir.patch \
 "
 
-SRCREV = "13b26a94a3bd6fec309a16982a3a80d83776d7ac"
+SRCREV = "9b21874f1a175a9b7c79175a221fa043e202ca73"
 
 
 inherit meson pkgconfig gettext systemd gtk-doc gobject-introspection python3native mime features_check useradd
@@ -76,3 +76,6 @@ USERADD_PACKAGES = "${PN}"
 USERADD_PARAM:${PN} = "--system --no-create-home --user-group --shell /sbin/nologin flatpak"
 
 FILES:${PN} += "${libdir} ${datadir}"
+
+CVE_STATUS[CVE-2026-34078] = "fixed-version: fixed in v1.17.4"
+CVE_STATUS[CVE-2026-34079] = "fixed-version: fixed in v1.17.4"
