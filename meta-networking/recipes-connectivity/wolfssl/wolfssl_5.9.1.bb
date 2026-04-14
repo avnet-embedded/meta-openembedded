@@ -17,7 +17,7 @@ SRC_URI = " \
     file://run-ptest \
 "
 
-SRCREV = "922d04b3568c6428a9fb905ddee3ef5a68db3108"
+SRCREV = "1d363f3adceba9d1478230ede476a37b0dcdef24"
 
 
 inherit autotools ptest
@@ -51,3 +51,12 @@ CVE_STATUS[CVE-2026-0819] = "fixed-version: fixed in 5.9.0"
 CVE_STATUS[CVE-2026-2646] = "fixed-version: fixed in 5.9.0"
 CVE_STATUS[CVE-2026-3503] = "fixed-version: fixed in 5.9.0"
 CVE_STATUS[CVE-2026-3548] = "fixed-version: fixed in 5.9.0"
+CVE_STATUS[CVE-2026-5194] = "fixed-version: fixed in 5.9.1"
+CVE_STATUS[CVE-2026-5263] = "fixed-version: fixed in 5.9.1"
+CVE_STATUS[CVE-2026-5264] = "fixed-version: fixed in 5.9.1"
+CVE_STATUS[CVE-2026-5446] = "fixed-version: fixed in 5.9.1"
+CVE_STATUS[CVE-2026-5503] = "fixed-version: fixed in 5.9.1"
+CVE_STATUS[CVE-2026-5504] = "fixed-version: fixed in 5.9.1"
+CVE_STATUS[CVE-2026-5507] = "fixed-version: fixed in 5.9.1"
+CVE_STATUS[CVE-2026-5772] = "fixed-version: fixed in 5.9.1"
+CVE_STATUS[CVE-2026-5778] = "fixed-version: fixed in 5.9.1"
