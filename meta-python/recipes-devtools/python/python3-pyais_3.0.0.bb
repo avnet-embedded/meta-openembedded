@@ -3,9 +3,9 @@ HOMEPAGE = "https://github.com/M0r13n/pyais"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=79d9e278b76e3e5b3358cd70b328173c"
 
-SRC_URI = "git://github.com/M0r13n/pyais;protocol=https;branch=master;tag=v${PV}"
+SRC_URI = "git://github.com/M0r13n/pyais;protocol=https;branch=main;tag=v${PV}"
 
-SRCREV = "6cec67eb8e48c2254bd7bc31415f8df60ecb11ce"
+SRCREV = "a88659ae381487e547fde3c18ab45cfe572b1094"
 
 inherit python_setuptools_build_meta ptest-python-pytest
 
