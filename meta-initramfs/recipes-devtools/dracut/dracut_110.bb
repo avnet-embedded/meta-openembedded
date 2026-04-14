@@ -7,10 +7,8 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=b234ee4d69f5fce4486a80fdaf4a4263"
 
 PE = "1"
 
-SRCREV = "13c5e5feee9ba86b960d351f87aa0eb25f242ff0"
-SRC_URI = "git://github.com/dracut-ng/dracut-ng.git;protocol=http;branch=main;tag=${PV} \
-           file://0002-fix-broken-symlink-in-dracut-config-examples.patch \
-           "
+SRCREV = "25bf13842a5c55f4a5ab1523e005b3b11b9ac38e"
+SRC_URI = "git://github.com/dracut-ng/dracut-ng.git;protocol=http;branch=main;tag=${PV}"
 
 DEPENDS += "kmod"
 DEPENDS:append:libc-musl = " fts"
