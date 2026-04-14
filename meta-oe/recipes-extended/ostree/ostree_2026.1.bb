@@ -23,7 +23,7 @@ SRC_URI = "${GITHUB_BASE_URI}/download/v${PV}/libostree-${PV}.tar.xz \
            file://run-ptest \
            file://0001-trivial-httpd-Fix-const-correctness-of-slash-pointer.patch \
            "
-SRC_URI[sha256sum] = "af8d080b9585e7fd1faba8f022967e1c268ae62e20ecf32ee7b364c1e307570b"
+SRC_URI[sha256sum] = "8e77c285dd6fa5ec5fb063130390977be727fe11107335ed8778a40385069e95"
 
 S = "${UNPACKDIR}/libostree-${PV}"
 
