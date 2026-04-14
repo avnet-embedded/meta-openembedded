@@ -2,9 +2,9 @@ SUMMARY = "Advanced TFTP server and client"
 SECTION = "net"
 HOMEPAGE = "http://packages.debian.org/atftp"
 LICENSE = "GPL-2.0-only"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=f65159f73e603f89d6867d43191900e5"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=570a9b3749dd0463a1778803b12a6dce"
 
-SRCREV = "d5c27eb7a9695d83569767e27ef69674173db39a"
+SRCREV = "7238b7b6753157d0c4ad739df3d87a958f78d70b"
 
 SRC_URI = "git://git.code.sf.net/p/atftp/code;branch=master;protocol=https \
            file://atftpd.init \
