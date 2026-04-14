@@ -1,10 +1,10 @@
 SUMMARY = "Send responses to httpx."
 HOMEPAGE = "https://github.com/Colin-b/pytest_httpx"
 LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=8dcb0d82b1d402b6be745fc78dde254b"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=3b6746540997ba13df3f30783db069bc"
 RECIPE_MAINTAINER = "Tom Geelen <t.f.g.geelen@gmail.com>"
 
-SRC_URI[sha256sum] = "9edb66a5fd4388ce3c343189bc67e7e1cb50b07c2e3fc83b97d511975e8a831b"
+SRC_URI[sha256sum] = "05a56527484f7f4e8c856419ea379b8dc359c36801c4992fdb330f294c690356"
 
 inherit pypi python_setuptools_build_meta ptest-python-pytest
 
