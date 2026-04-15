@@ -4,7 +4,7 @@ LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://LICENSE.md;md5=5c778842f66a649636561c423c0eec2e"
 RECIPE_MAINTAINER = "Tom Geelen <t.f.g.geelen@gmail.com>"
 
-SRC_URI[sha256sum] = "9b1f190ce15a2dd22e7758651d9b6d12df09a13d51ba5bf4fc33c383a48e1775"
+SRC_URI[sha256sum] = "6c942071b68f07e178264b9152f1f16dfac5da85880c4ce06366a96d70d4f31e"
 
 SRC_URI += "file://0001-ptest-disable-failing-tests.patch"
 
