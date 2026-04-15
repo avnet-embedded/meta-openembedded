@@ -3,11 +3,11 @@ LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://COPYING;md5=94d55d512a9ba36caa9b7df079bae19f"
 
 SRC_URI = "http://user-dirs.freedesktop.org/releases/${BPN}-${PV}.tar.xz"
-SRC_URI[sha256sum] = "e92deb929c10d4b29329397af8a2585101247f7e6177ac6f1d28e82130ed8c19"
+SRC_URI[sha256sum] = "b8e34286278f4fef3e1bfe9685c395ccc0eb50c14d3a2fb4953dd00fbfd3af39"
 
-inherit autotools gettext pkgconfig
+inherit meson gettext pkgconfig
 
-EXTRA_OECONF = "--disable-documentation"
+EXTRA_OEMESON = "-Ddocs=false"
 
 CONFFILES:${PN} += " \
     ${sysconfdir}/xdg/user-dirs.conf \
