@@ -12,7 +12,7 @@ SRC_URI = " \
     git://salsa.debian.org/gnome-team/libcanberra;protocol=https;branch=debian/latest;tag=debian/${PV} \
     file://0001-Determine-audio-buffer-size-for-a-time-of-500ms.patch \
 "
-SRCREV = "d1ed1ac0c9950ed3908c04abb7c4a6de5c51ed94"
+SRCREV = "47d67f43c58af36143060888fc8e69a9cb0eddea"
 
 EXTRA_OECONF = "\
     --enable-null \
