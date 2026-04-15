@@ -6,10 +6,10 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=b234ee4d69f5fce4486a80fdaf4a4263"
 
 DEPENDS = "ncurses libnl"
 
-SRC_URI = "git://github.com/htop-dev/htop.git;branch=main;protocol=https \
+SRC_URI = "git://github.com/htop-dev/htop.git;branch=main;protocol=https;tag=${PV} \
            file://0001-configure.ac-Remove-usr-include-libnl3.patch \
 "
-SRCREV = "348c0a6bf4f33571835a0b6a1a0f5deb15132128"
+SRCREV = "a21f043b253a6dfa89df1ff4130fe7d2e505000f"
 
 
 inherit autotools pkgconfig
@@ -23,7 +23,7 @@ PACKAGECONFIG ??= " \
 "
 PACKAGECONFIG[unicode] = "--enable-unicode,--disable-unicode"
 PACKAGECONFIG[affinity] = "--enable-affinity,--disable-affinity,,,,hwloc"
-PACKAGECONFIG[unwind] = "--enable-unwind,--disable-unwind,libunwind"
+PACKAGECONFIG[unwind] = "--with-libunwind,--without-libunwind,libunwind"
 PACKAGECONFIG[hwloc] = "--enable-hwloc,--disable-hwloc,hwloc,,,affinity"
 PACKAGECONFIG[openvz] = "--enable-openvz,--disable-openvz"
 PACKAGECONFIG[vserver] = "--enable-vserver,--disable-vserver"
