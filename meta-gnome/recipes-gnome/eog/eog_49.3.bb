@@ -13,7 +13,6 @@ DEPENDS = " \
     libpeas-1 \
     libportal \
     libexif \
-    lcms \
 "
 
 
@@ -22,7 +21,11 @@ inherit gnomebase pkgconfig gsettings gobject-introspection gettext mime-xdg fea
 # FIXME: whilst eog uses libpeas <2, g-i is needed. This can be removed when libpeas2 is used.
 REQUIRED_DISTRO_FEATURES = "opengl gobject-introspection-data"
 
-SRC_URI[archive.sha256sum] = "fadd12e14ba9cd2be6989dfbcef40001645b63440ceed8e04867b07587b066dc"
+SRC_URI[archive.sha256sum] = "6b4e69c7a8086ae85d556ca4a24daa665b5622c4097e1ee59564bff4cc963124"
+
+PACKAGECONFIG = "${@bb.utils.contains('DISTRO_FEATURES', 'x11','cms', '', d)}"
+
+PACKAGECONFIG[cms] = "-Dcms=true,-Dcms=false,lcms"
 
 GTKDOC_MESON_OPTION = "gtk_doc"
 
