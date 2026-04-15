@@ -10,11 +10,10 @@ LIC_FILES_CHKSUM = "file://COPYING.GPL3;md5=8521fa4dd51909b407c5150498d34f4e \
                     file://COPYING.BSD3;md5=f56403ae5b2d6b82ad136d753c05a82e \
                    "
 
-SRC_URI = "git://github.com/onboard-osk/onboard.git;protocol=https;branch=main \
-           file://0001-pypredict-lm-Define-error-API-if-platform-does-not-h.patch \
+SRC_URI = "git://github.com/onboard-osk/onboard.git;protocol=https;branch=main;tag=${PV} \
            file://0002-toggle-onboard-hoverclick-use-bin-sh-default-shell-i.patch \
           "
-SRCREV = "350f7643576bc8c5f2cff9c6ddce0e1e7cff995d"
+SRCREV = "02b19e2aee88e4bf2cdc7094813ddd4a6c05d1e7"
 
 inherit features_check setuptools3 pkgconfig gtk-icon-cache gsettings mime-xdg
 
