@@ -6,6 +6,8 @@ DEPENDS = " \
     glib-2.0 \
     glib-2.0-native \
     bison-native \
+    desktop-file-utils-native \
+    exiv2 \
     gtk+3 \
     gsettings-desktop-schemas \
     zlib \
@@ -13,21 +15,16 @@ DEPENDS = " \
     json-glib \
 "
 
-PACKAGECONFIG ?= "${@bb.utils.contains('DISTRO_FEATURES', 'polkit', 'colord', '', d)} exiv2 gstreamer lcms libjxl libraw librsvg libwebp"
+PACKAGECONFIG ?= "${@bb.utils.contains('DISTRO_FEATURES', 'polkit', 'colord', '', d)} gstreamer lcms libjxl libraw librsvg libwebp"
 PACKAGECONFIG[gstreamer] = "-Dgstreamer=true,-Dgstreamer=false,gstreamer1.0 gstreamer1.0-plugins-base"
 PACKAGECONFIG[libwebp] = "-Dlibwebp=true,-Dlibwebp=false,libwebp"
 PACKAGECONFIG[libjxl] = "-Dlibjxl=true,-Dlibjxl=false,libjxl"
 PACKAGECONFIG[lcms] = "-Dlcms2=true,-Dlcms2=false,lcms"
 PACKAGECONFIG[colord] = "-Dcolord=true,-Dcolord=false,colord"
-PACKAGECONFIG[exiv2] = "-Dexiv2=true,-Dexiv2=false,exiv2"
 PACKAGECONFIG[librsvg] = "-Dlibrsvg=true,-Dlibrsvg=false,librsvg"
 PACKAGECONFIG[libraw] = "-Dlibraw=true,-Dlibraw=false,libraw"
 
-# webservices would require libsecret and webkitgtk3 built with deprecated libsoup2
-EXTRA_OEMESON += "-Dwebservices=false -Dlibsecret=false"
-
-inherit gnomebase gnome-help gsettings itstool mime-xdg
-
-SRC_URI[archive.sha256sum] = "ee12d24cf231010241f758d6c95b9d53a7381278fa76b6a518b3d09b371efaec"
+inherit gnomebase gnome-help gsettings itstool gtk-icon-cache mime-xdg
+SRC_URI[archive.sha256sum] = "3222344653cd6fb5d7981b73951ae3d90c414f74220a8b1c8665b25574284c75"
 
 FILES:${PN} += "${datadir}/metainfo"
