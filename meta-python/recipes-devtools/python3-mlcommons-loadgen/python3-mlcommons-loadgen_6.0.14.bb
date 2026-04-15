@@ -21,7 +21,7 @@ SRC_URI += " \
 PYPI_PACKAGE = "mlcommons_loadgen"
 UPSTREAM_CHECK_PYPI_PACKAGE = "mlcommons_loadgen"
 
-SRC_URI[sha256sum] = "cd686a6223c978d1056e38a417e4807bfa21c855189f7882d24c8313174bca74"
+SRC_URI[sha256sum] = "9a56e361b4614938acdb6a601cc9c57ce551809f831023401bbac6dd7eb00970"
 
 # Because the pyproject.toml contains invalid requirements.
 INSANE_SKIP += "pep517-backend"
