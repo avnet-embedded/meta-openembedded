@@ -14,7 +14,7 @@ SRC_URI = "git://github.com/pocoproject/poco.git;branch=poco-${PV};protocol=http
            file://0003-quill-rdtsc-fallback-for-32-bit-powerpc.patch \
            file://run-ptest \
            "
-SRCREV = "a1aacbba1bda4301db01bb1a2c2ab80677756b90"
+SRCREV = "afbb1ab68f29eec7079e2fdfa04b3efdbec6529d"
 
 UPSTREAM_CHECK_GITTAGREGEX = "poco-(?P<pver>\d+(\.\d+)+)"
 
@@ -75,11 +75,6 @@ EXTRA_OECMAKE:append:class-native = " -DPOCO_UNBUNDLED=OFF"
 
 # do not use rpath
 EXTRA_OECMAKE:append = " -DCMAKE_SKIP_RPATH=ON"
-
-LDFLAGS:append:riscv32 = "${@bb.utils.contains('PACKAGECONFIG', 'Prometheus', ' -Wl,--no-as-needed -latomic -Wl,--as-needed', '', d)}"
-LDFLAGS:append:mips = "${@bb.utils.contains('PACKAGECONFIG', 'Prometheus', ' -Wl,--no-as-needed -latomic -Wl,--as-needed', '', d)}"
-LDFLAGS:append:powerpc = "${@bb.utils.contains('PACKAGECONFIG', 'Prometheus', ' -Wl,--no-as-needed -latomic -Wl,--as-needed', '', d)}"
-LDFLAGS:append:x86 = "${@bb.utils.contains('PACKAGECONFIG', 'Prometheus', ' -Wl,--no-as-needed -latomic -Wl,--as-needed', '', d)}"
 
 python populate_packages:prepend () {
     poco_libdir = d.expand('${libdir}')
