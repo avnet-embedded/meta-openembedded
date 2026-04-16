@@ -74,6 +74,7 @@ PTESTS_SLOW_META_OE = "\
     c-ares \
     ${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'freerdp', '', d)} \
     fftw \
+    jsoncpp \
     libusb-compat \
     mariadb \
     postgresql \
