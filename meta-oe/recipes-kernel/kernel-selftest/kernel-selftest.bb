@@ -80,6 +80,7 @@ KERNEL_SELFTEST_SRC ?= "Makefile \
                         tools \
                         scripts \
                         arch \
+                        ${@bb.utils.filter('PACKAGECONFIG', 'mm', d)} \
                         LICENSES \
 "
 do_compile() {
