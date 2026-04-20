@@ -29,16 +29,13 @@ PACKAGECONFIG:remove:arm = "bpf mm"
 # host ptrace.h is used to compile BPF target but mips ptrace.h is needed
 # progs/loop1.c:21:9: error: incomplete definition of type 'struct user_pt_regs'
 # m = PT_REGS_RC(ctx);
-# mm tests  need libhugetlbfs starting 5.8+ (https://lkml.org/lkml/2020/4/22/1654)
-PACKAGECONFIG:remove:qemumips = "bpf mm"
-
-# riscv does not support libhugetlbfs yet
-PACKAGECONFIG:remove:riscv64 = "bpf mm"
-PACKAGECONFIG:remove:riscv32 = "bpf mm"
+PACKAGECONFIG:remove:qemumips = "bpf"
+PACKAGECONFIG:remove:riscv64 = "bpf"
+PACKAGECONFIG:remove:riscv32 = "bpf"
 
 PACKAGECONFIG[bpf] = ",,elfutils elfutils-native libcap libcap-ng rsync-native python3-docutils-native,"
 PACKAGECONFIG[firmware] = ",,libcap, bash"
-PACKAGECONFIG[mm] = ",,libcap libhugetlbfs,libgcc bash"
+PACKAGECONFIG[mm] = ",,libcap, libgcc bash"
 
 do_patch[depends] += "virtual/kernel:do_shared_workdir"
 do_compile[depends] += "virtual/kernel:do_install"
