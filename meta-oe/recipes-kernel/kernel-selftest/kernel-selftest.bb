@@ -12,9 +12,14 @@ S = "${UNPACKDIR}"
 SRC_URI:append:libc-musl = "\
                       file://userfaultfd.patch \
                       "
+
+# Fix liburing detection (from Linux v7.0)
+MM_PATCH = "file://0001-selftests-mm-pass-down-full-CC-and-CFLAGS-to-check_c.patch"
+
 SRC_URI += "file://run-ptest \
             file://COPYING \
             file://0001-selftests-timers-Fix-clock_adjtime-for-newer-32-bit-.patch \
+            ${@bb.utils.contains('PACKAGECONFIG', 'mm', '${MM_PATCH}', '', d)} \
             "
 
 # now we just test bpf and mm (formerly known as vm)
@@ -35,7 +40,7 @@ PACKAGECONFIG:remove:riscv32 = "bpf"
 
 PACKAGECONFIG[bpf] = ",,elfutils elfutils-native libcap libcap-ng rsync-native python3-docutils-native,"
 PACKAGECONFIG[firmware] = ",,libcap, bash"
-PACKAGECONFIG[mm] = ",,libcap, libgcc bash"
+PACKAGECONFIG[mm] = ",,libcap liburing numactl, libgcc bash"
 
 do_patch[depends] += "virtual/kernel:do_shared_workdir"
 do_compile[depends] += "virtual/kernel:do_install"
