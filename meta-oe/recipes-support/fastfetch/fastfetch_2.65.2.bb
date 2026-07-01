@@ -24,18 +24,18 @@ EXTRA_OECMAKE += "\
 PACKAGECONFIG ??= "\
     ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'egl', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'opengl x11', 'glx', '', d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'xcb xrandr', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'xcb xrandr va-x11', '', d)} \
     ${@bb.utils.filter('DISTRO_FEATURES', 'opencl pulseaudio vulkan wayland', d)} \
     dbus \
     drm \
     sqlite3 \
+    va-drm \
 "
 
 PACKAGECONFIG[chafa] = "-DENABLE_CHAFA=ON,-DENABLE_CHAFA=OFF,chafa"
 PACKAGECONFIG[dbus] = "-DENABLE_DBUS=ON,-DENABLE_DBUS=OFF,dbus"
 PACKAGECONFIG[dconf] = "-DENABLE_DCONF=ON,-DENABLE_DCONF=OFF,dconf"
 PACKAGECONFIG[ddcutil] = "-DENABLE_DDCUTIL=ON,-DENABLE_DDCUTIL=OFF,ddcutil"
-PACKAGECONFIG[drm-amdgpu] = "-DENABLE_DRM_AMDGPU=ON,-DENABLE_DRM_AMDGPU=OFF,"
 PACKAGECONFIG[drm] = "-DENABLE_DRM=ON,-DENABLE_DRM=OFF,libdrm"
 PACKAGECONFIG[egl] = "-DENABLE_EGL=ON,-DENABLE_EGL=OFF,virtual/egl"
 PACKAGECONFIG[elf] = "-DENABLE_ELF=ON,-DENABLE_ELF=OFF,elfutils"
@@ -49,7 +49,8 @@ PACKAGECONFIG[opencl] = "-DENABLE_OPENCL=ON,-DENABLE_OPENCL=OFF,opencl-headers v
 PACKAGECONFIG[pulseaudio] = "-DENABLE_PULSE=ON,-DENABLE_PULSE=OFF,pulseaudio"
 PACKAGECONFIG[rpm] = "-DENABLE_RPM=ON,-DENABLE_RPM=OFF,rpm"
 PACKAGECONFIG[sqlite3] = "-DENABLE_SQLITE3=ON,-DENABLE_SQLITE3=OFF,sqlite3"
-PACKAGECONFIG[vaapi] = "-DENABLE_VA=ON,-DENABLE_VA=OFF,libva"
+PACKAGECONFIG[va-drm] = "-DENABLE_VADRM=ON,-DENABLE_VADRM=OFF,libva"
+PACKAGECONFIG[va-x11] = "-DENABLE_VAX11=ON,-DENABLE_VAX11=OFF,libva"
 PACKAGECONFIG[vdpau] = "-DENABLE_VDPAU=ON,-DENABLE_VDPAU=OFF,libvdpau"
 PACKAGECONFIG[vulkan] = "-DENABLE_VULKAN=ON,-DENABLE_VULKAN=OFF,vulkan-loader"
 PACKAGECONFIG[wayland] = "-DENABLE_WAYLAND=ON,-DENABLE_WAYLAND=OFF,wayland"
@@ -57,7 +58,6 @@ PACKAGECONFIG[xcb] = "-DENABLE_XCB_RANDR=ON,-DENABLE_XCB_RANDR=OFF,libxcb"
 PACKAGECONFIG[xrandr] = "-DENABLE_XRANDR=ON,-DENABLE_XRANDR=OFF,libxrandr"
 PACKAGECONFIG[zfs] = "-DENABLE_LIBZFS=ON,-DENABLE_LIBZFS=OFF,zfs"
 PACKAGECONFIG[zlib] = "-DENABLE_ZLIB=ON,-DENABLE_ZLIB=OFF,zlib"
-
 PACKAGES =+ "${PN}-completions"
 
 FILES:${PN} += "${datadir}/licenses"
