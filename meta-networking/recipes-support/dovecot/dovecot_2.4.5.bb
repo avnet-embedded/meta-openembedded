@@ -20,6 +20,9 @@ SRC_URI[sha256sum] = "868c2686a61b5f8e00a3e4721789b1ab46e6528fd773a5fbed07a6ecba
 
 DEPENDS = "openssl xz zlib bzip2 libcap icu libtirpc bison-native"
 CFLAGS += "-I${STAGING_INCDIR}/tirpc"
+# clang 23 runs into infinite loop while compiling it
+CFLAGS:append:toolchain-clang = " -mllvm -disable-lsr"
+
 LDFLAGS += "-ltirpc"
 
 inherit autotools pkgconfig systemd useradd gettext multilib_header
